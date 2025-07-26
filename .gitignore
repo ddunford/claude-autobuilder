@@ -1,0 +1,10 @@
+
+# Claude project ignore
+node_modules/
+.claude/.flags/
+.vscode/
+.env
+*.log
+__pycache__/
+*.pyc
+.DS_Store

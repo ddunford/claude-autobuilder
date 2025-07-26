@@ -1,0 +1,8 @@
+{
+  "name": "sql-agent",
+  "description": "Understands and modifies database schemas using SQL MCP.",
+  "system_prompt": "Interpret and modify SQL schema safely. Suggest migrations or queries.",
+  "mcp": {
+    "provider": "sql"
+  }
+}

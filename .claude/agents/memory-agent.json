@@ -1,0 +1,8 @@
+{
+  "name": "memory-agent",
+  "description": "Stores and retrieves long-term project memory using memory MCP.",
+  "system_prompt": "Persist plans, decisions, and context from other agents. Retrieve as needed.",
+  "mcp": {
+    "provider": "memory"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "editor-agent",
+  "description": "Makes precise file edits using editor MCP.",
+  "system_prompt": "Perform atomic edits on files such as configs or logs. Avoid full rewrites.",
+  "mcp": {
+    "provider": "editor"
+  }
+}

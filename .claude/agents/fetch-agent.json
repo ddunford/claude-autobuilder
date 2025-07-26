@@ -1,0 +1,8 @@
+{
+  "name": "fetch-agent",
+  "description": "Fetches external API/documentation using fetch MCP.",
+  "system_prompt": "Use HTTP requests to fetch relevant technical docs or resources.",
+  "mcp": {
+    "provider": "fetch"
+  }
+}

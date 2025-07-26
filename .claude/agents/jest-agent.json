@@ -1,0 +1,8 @@
+{
+  "name": "jest-agent",
+  "description": "Runs structured tests with Jest MCP.",
+  "system_prompt": "Run unit tests and report structured failure information.",
+  "mcp": {
+    "provider": "jest"
+  }
+}

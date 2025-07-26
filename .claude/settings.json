@@ -5,6 +5,10 @@
         "hooks": [
           {
             "type": "command",
+            "command": "echo '[HOOK FIRED] UserPromptSubmit for planner-agent' >> .claude/hooks/hook.log"
+          },
+          {
+            "type": "command",
             "command": "claude chat --agent planner-agent --files prompt.txt"
           }
         ]
@@ -16,6 +20,10 @@
         "hooks": [
           {
             "type": "command",
+            "command": "echo '[HOOK FIRED] planner-agent \u2192 spec-agent' >> .claude/hooks/hook.log"
+          },
+          {
+            "type": "command",
             "command": "claude chat --agent spec-agent --files specs"
           }
         ]
@@ -23,6 +31,10 @@
       {
         "matcher": "spec-agent",
         "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[HOOK FIRED] spec-agent \u2192 test-writer-agent' >> .claude/hooks/hook.log"
+          },
           {
             "type": "command",
             "command": "claude chat --agent test-writer-agent --files specs"
@@ -34,6 +46,10 @@
         "hooks": [
           {
             "type": "command",
+            "command": "echo '[HOOK FIRED] test-writer-agent \u2192 impl-agent' >> .claude/hooks/hook.log"
+          },
+          {
+            "type": "command",
             "command": "claude chat --agent impl-agent --files src"
           }
         ]
@@ -41,6 +57,10 @@
       {
         "matcher": "impl-agent",
         "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[HOOK FIRED] impl-agent \u2192 test-runner-agent' >> .claude/hooks/hook.log"
+          },
           {
             "type": "command",
             "command": "claude chat --agent test-runner-agent --files src"

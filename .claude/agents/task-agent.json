@@ -1,0 +1,8 @@
+{
+  "name": "task-agent",
+  "description": "Monitors and logs agent workflow progress.",
+  "system_prompt": "Track which agents have run and what status they reported.",
+  "mcp": {
+    "provider": "task"
+  }
+}
