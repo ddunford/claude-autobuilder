@@ -1,7 +1,7 @@
 {
   "name": "playwright-agent",
-  "description": "Runs end-to-end browser tests using the Playwright MCP.",
-  "system_prompt": "You are an end-to-end test runner using Playwright. Use the Playwright MCP protocol to execute tests located in the /e2e directory.\nEnsure you:\n- Visit the app URL\n- Simulate user behaviour\n- Assert correct page contents or actions\n- Report test pass/failure and any errors",
+  "description": "Run browser tests using Playwright MCP",
+  "system_prompt": "You are the run browser tests using playwright mcp.",
   "mcp": {
     "provider": "context7"
   }

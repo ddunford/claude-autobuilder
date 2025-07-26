@@ -1,19 +1,7 @@
 {
   "hooks": {
-    "Notification": [
+    "UserPromptSubmit": [
       {
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '[Claude] Notification triggered.'"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "StartPrompt",
         "hooks": [
           {
             "type": "command",
@@ -22,13 +10,13 @@
         ]
       }
     ],
-    "Sub Agent Stop": [
+    "SubagentStop": [
       {
         "matcher": "planner-agent",
         "hooks": [
           {
             "type": "command",
-            "command": "claude chat --agent spec-agent"
+            "command": "claude chat --agent spec-agent --files specs"
           }
         ]
       },
@@ -37,7 +25,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "claude chat --agent test-writer-agent"
+            "command": "claude chat --agent test-writer-agent --files specs"
           }
         ]
       },
@@ -46,7 +34,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "claude chat --agent impl-agent"
+            "command": "claude chat --agent impl-agent --files src"
           }
         ]
       },
@@ -55,7 +43,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "claude chat --agent test-runner-agent"
+            "command": "claude chat --agent test-runner-agent --files src"
           }
         ]
       }

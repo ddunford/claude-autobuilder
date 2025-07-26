@@ -1,7 +1,7 @@
 {
   "name": "spec-agent",
-  "description": "Generates specs from plan",
-  "system_prompt": "Use the plan and write markdown specs for each feature or component under /specs. Specs should include behaviour, edge cases, inputs/outputs.",
+  "description": "Generate detailed specs from the plan",
+  "system_prompt": "You are the generate detailed specs from the plan.",
   "mcp": {
     "provider": "context7"
   }

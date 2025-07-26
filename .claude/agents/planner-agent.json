@@ -1,7 +1,7 @@
 {
   "name": "planner-agent",
-  "description": "Breaks prompt into components/features",
-  "system_prompt": "Given a single-line product request in prompt.txt, break it down into modular components or features suitable for engineering. Output as markdown with bullet points.",
+  "description": "Break the prompt into a plan",
+  "system_prompt": "You are the break the prompt into a plan.",
   "mcp": {
     "provider": "context7"
   }

@@ -1,17 +1,11 @@
 #!/bin/bash
 set -e
-
-echo "🧠 Starting Claude AutoBuilder workflow..."
-
-# Ensure MCPs are installed
+echo "🧠 Starting AutoBuilder Workflow"
 ./setup-mcp.sh
-
-echo "🔍 Checking for existing specs..."
-if [ -d "specs" ] && [ "$(ls -A specs/*.md 2>/dev/null)" ]; then
-  echo "📚 Found existing specs. Skipping spec generation."
-  echo "⚙️  Starting with test-writer-agent..."
-  claude chat --agent test-writer-agent --files specs
+if ls specs/*.md &>/dev/null; then
+  echo "📚 Specs found. Starting from specs..."
+  claude -p "Please use the existing specs in the /specs folder to begin writing unit tests."
 else
-  echo "📝 No specs found. Using prompt.txt to generate plan and specs..."
-  claude chat --agent planner-agent --files prompt.txt
+  echo "📝 No specs found. Starting from prompt.txt..."
+  claude -p "$(cat prompt.txt)"
 fi
