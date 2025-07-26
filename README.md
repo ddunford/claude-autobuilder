@@ -103,3 +103,20 @@ claude chat --agent playwright-agent --files e2e
 
 Make sure your MCP Playwright agent is installed and listening.
 
+
+
+---
+
+## 🏁 One-Command Startup
+
+To install dependencies and run the Claude workflow in one step:
+
+```bash
+./start.sh
+```
+
+This will:
+1. Install `context7` and `playwright` MCPs using `setup-mcp.sh`
+2. Kick off the Claude agent workflow using your prompt in `prompt.txt`
+
+Make sure `claude` CLI is installed and available in your shell.
