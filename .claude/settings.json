@@ -1,64 +1,49 @@
 {
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": ".*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '[Claude] Notification triggered.'"
-          }
+    "version": "1.0",
+    "project": {
+        "name": "claude-agent-swarm",
+        "description": "A suite of Claude sub-agents for automated software development"
+    },
+    "agents": {
+        "planner": {
+            "path": ".claude/agents/planner.cl",
+            "description": "Analyzes requirements and creates specifications",
+            "permissions": ["read_files", "write_files"]
+        },
+        "architect": {
+            "path": ".claude/agents/architect.cl",
+            "description": "Designs system architecture and technical specifications",
+            "permissions": ["read_files", "write_files"]
+        },
+        "builder": {
+            "path": ".claude/agents/builder.cl",
+            "description": "Implements the application based on technical specs",
+            "permissions": ["read_files", "write_files", "run_commands"]
+        },
+        "tester": {
+            "path": ".claude/agents/tester.cl",
+            "description": "Implements and runs tests following pyramid strategy",
+            "permissions": ["read_files", "write_files", "run_commands"]
+        }
+    },
+    "hooks": {
+        "pre_build": ".claude/hooks/pre-build.sh",
+        "post_build": ".claude/hooks/post-build.sh"
+    },
+    "mcp": {
+        "required": [
+            "context7",
+            "playwright",
+            "memory",
+            "fetch",
+            "editor",
+            "sql",
+            "jest",
+            "task"
         ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "StartPrompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "claude chat --agent planner-agent --files prompt.txt"
-          }
-        ]
-      }
-    ],
-    "Sub Agent Stop": [
-      {
-        "matcher": "planner-agent",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "claude chat --agent spec-agent"
-          }
-        ]
-      },
-      {
-        "matcher": "spec-agent",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "claude chat --agent test-writer-agent"
-          }
-        ]
-      },
-      {
-        "matcher": "test-writer-agent",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "claude chat --agent impl-agent"
-          }
-        ]
-      },
-      {
-        "matcher": "impl-agent",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "claude chat --agent test-runner-agent"
-          }
-        ]
-      }
-    ]
-  }
+    },
+    "security": {
+        "allowed_directories": ["./src", "./specs", "./build/temp"],
+        "restricted_directories": [".git", "node_modules"]
+    }
 }

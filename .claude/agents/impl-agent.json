@@ -1,8 +1,0 @@
-{
-  "name": "impl-agent",
-  "description": "Implements code from unit tests",
-  "system_prompt": "Read the unit tests in /tests and write only the implementation required to make the tests pass. Place code in /src.",
-  "mcp": {
-    "provider": "context7"
-  }
-}

@@ -1,122 +1,90 @@
-# Claude AutoBuilder 🧠🤖
+# Claude Agent Swarm
 
-This is a fully automated Claude Code workflow that:
+A suite of Claude sub-agents that automate the software development lifecycle, from requirements analysis to testing.
 
-1. Reads a natural language prompt from `prompt.txt`
-2. Breaks the task into modular features (`planner-agent`)
-3. Generates formal specs in `/specs` (`spec-agent`)
-4. Writes unit tests first (`test-writer-agent`)
-5. Writes implementation code to pass those tests (`impl-agent`)
-6. Runs tests and loops until green (`test-runner-agent`)
+## Features
 
-It follows the **test pyramid** strategy: unit > integration > e2e.
+- 🤖 Multiple specialized agents working together
+- 📋 Processes prompts or reads existing specs
+- 🏗 Generates complete applications in the `src` directory
+- 🧪 Comprehensive testing strategy (unit, integration, E2E)
+- 🐳 Docker/container support built-in
+- 🔄 Automated MCP installation and management
 
----
+## Prerequisites
 
-## 🚀 Quickstart
+- Node.js 18 or newer
+- Claude Code CLI (`npm install -g @anthropic-ai/claude-code`)
 
-### 1. Install Claude CLI
-
-Make sure you’ve installed Claude CLI (`claude` command) via:
-
-```bash
-npm install -g claude-code
-```
-
----
-
-### 2. Run the AutoBuilder
-
-1. Update your idea in:
-
-```txt
-prompt.txt
-```
-
-Example:
-```
-Build a simple TODO list app with add/delete/complete functionality.
-```
-
-2. Then run:
-
-```bash
-claude chat --tool StartPrompt
-```
-
-> This will kick off the full workflow using custom agents and hooks.
-
----
-
-## 🧩 Directory Layout
+## Directory Structure
 
 ```
 .
-├── prompt.txt               # Your one-line app idea
-├── CLAUDE.md                # Shared context (test strategy, roles)
-├── specs/                   # Claude writes feature specs here
-├── tests/                   # Claude writes unit tests first
-├── src/                     # Claude writes just enough code to pass tests
-├── e2e/                     # Optional: future E2E tests
-└── .claude/
-    ├── settings.json        # Hook pipeline setup
-    └── agents/              # All 5 custom agents
+├── .claude/              # Claude Code configuration
+│   ├── agents/          # Sub-agents
+│   ├── hooks/           # Build hooks
+│   └── .flags/          # MCP installation flags
+├── src/                 # Generated application code
+├── specs/               # Project specifications
+└── build/              # Build artifacts
+    └── temp/           # Temporary files
 ```
 
----
+## Usage
 
-## 🧠 Custom Agents
+1. Start with a prompt:
+   ```bash
+   ./start.sh "Build a REST API for a blog"
+   ```
 
-- `planner-agent`: breaks down idea into features
-- `spec-agent`: creates `/specs/*.md`
-- `test-writer-agent`: generates `/tests/*.test.js`
-- `impl-agent`: writes `/src/*.js` to pass tests
-- `test-runner-agent`: runs tests and outputs results
+2. Use existing specs:
+   ```bash
+   ./start.sh --specs
+   ```
 
----
+3. Force MCP reinstallation:
+   ```bash
+   ./start.sh --force "Build a TODO app"
+   ```
 
-## 🧪 Notes
+## Agents
 
-- It runs tests repeatedly until they pass
-- Only writes minimal code required to satisfy tests
-- Avoids hallucinating full apps at once
-- Easily extend with Playwright, CI, or Slack notifications
+- **Planner**: Analyzes requirements and creates specifications
+- **Architect**: Designs system architecture and technical specifications
+- **Builder**: Implements the application based on technical specs
+- **Tester**: Implements and runs tests following pyramid strategy
 
----
+## Development Process
 
-## 🐙 Ready for GitHub
+1. **Planning Phase**
+   - Analyzes prompt or reads specs
+   - Generates architectural requirements
+   - Creates initial specifications
 
-You can now push this folder to GitHub and share your Claude-powered code pipeline.
+2. **Architecture Phase**
+   - Designs system architecture
+   - Selects technology stack
+   - Defines component structure
 
+3. **Implementation Phase**
+   - Sets up project structure
+   - Implements components
+   - Configures deployment
 
----
+4. **Testing Phase**
+   - Implements unit tests
+   - Creates integration tests
+   - Develops E2E tests
+   - Generates coverage reports
 
-## 🌐 Playwright Agent (MCP)
+## Contributing
 
-The `playwright-agent` uses Playwright via MCP protocol to run full browser-based tests stored in `/e2e`.
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
-> To run:
+## License
 
-```bash
-claude chat --agent playwright-agent --files e2e
-```
-
-Make sure your MCP Playwright agent is installed and listening.
-
-
-
----
-
-## 🏁 One-Command Startup
-
-To install dependencies and run the Claude workflow in one step:
-
-```bash
-./start.sh
-```
-
-This will:
-1. Install `context7` and `playwright` MCPs using `setup-mcp.sh`
-2. Kick off the Claude agent workflow using your prompt in `prompt.txt`
-
-Make sure `claude` CLI is installed and available in your shell.
+MIT
