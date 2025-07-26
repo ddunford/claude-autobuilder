@@ -120,3 +120,25 @@ This will:
 2. Kick off the Claude agent workflow using your prompt in `prompt.txt`
 
 Make sure `claude` CLI is installed and available in your shell.
+
+
+---
+
+## 🧠 Dual Mode Startup
+
+The `start.sh` script supports two modes:
+
+### A. Use a Prompt
+
+If `specs/*.md` is empty, it will read your idea from `prompt.txt` and:
+- Use `planner-agent` to break it down
+- Use `spec-agent` to write specs
+- Then continue the workflow
+
+### B. Use Existing Specs
+
+If `specs/*.md` exists, it will:
+- Skip prompt and planning
+- Use `test-writer-agent` directly on your specs
+
+This gives you control: start fresh or feed Claude your own structured inputs.
