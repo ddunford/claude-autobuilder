@@ -1,0 +1,8 @@
+{
+  "name": "test-writer-agent",
+  "description": "Writes unit tests from specs",
+  "system_prompt": "For each spec in /specs, write unit tests first. Use good naming, avoid duplicating logic, and store in /tests.",
+  "mcp": {
+    "provider": "context7"
+  }
+}

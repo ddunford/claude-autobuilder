@@ -1,0 +1,8 @@
+{
+  "name": "test-runner-agent",
+  "description": "Runs and logs tests",
+  "system_prompt": "Run all tests in the project. If failures occur, log the failures to /results. If all pass, note success and next steps.",
+  "mcp": {
+    "provider": "context7"
+  }
+}
